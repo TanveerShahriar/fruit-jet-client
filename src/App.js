@@ -6,6 +6,7 @@ import Footer from './Pages/Shared/Footer/Footer';
 import Header from './Pages/Shared/Header/Header';
 import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
+import NotFound from './Pages/NotFound/NotFound';
 import Register from './Pages/Login/Register/Register';
 import { ToastContainer } from 'react-toastify';
 
@@ -41,6 +42,12 @@ function App() {
         <Route path='/register' element={
           <CustomTitle title={"Register"}>
             <Register></Register>
+          </CustomTitle>
+        }></Route>
+
+        <Route path='*' element={
+          <CustomTitle title={"Not Found"}>
+            <NotFound></NotFound>
           </CustomTitle>
         }></Route>
 
