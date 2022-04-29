@@ -1,0 +1,22 @@
+.banner-text{
+    width: 100%;
+}
+
+.banner-text h2{
+    font-size: 40px;
+}
+
+.banner-text h1{
+    font-size: 60px;
+}
+
+.banner-image img{
+    border-radius: 20px;
+}
+
+@media only screen and (min-width: 992px){
+    .banner-image,
+    .banner-text{
+        width: 50%;
+    }
+}
