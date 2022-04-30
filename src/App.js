@@ -8,7 +8,9 @@ import Home from './Pages/Home/Home/Home';
 import Login from './Pages/Login/Login/Login';
 import NotFound from './Pages/NotFound/NotFound';
 import Register from './Pages/Login/Register/Register';
+import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
+import Inventory from './Pages/Inventory/Inventory/Inventory';
 
 function App() {
   return (
@@ -25,6 +27,14 @@ function App() {
           <CustomTitle title={"Home"}>
             <Home></Home>
           </CustomTitle>
+        }></Route>
+
+        <Route path='/inventory' element={
+          <RequireAuth>
+            <CustomTitle title={"Inventory"}>
+              <Inventory></Inventory>
+            </CustomTitle>
+          </RequireAuth>
         }></Route>
 
         <Route path='/blogs' element={
