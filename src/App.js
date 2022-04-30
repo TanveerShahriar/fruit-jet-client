@@ -11,11 +11,13 @@ import Register from './Pages/Login/Register/Register';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import Inventory from './Pages/Inventory/Inventory/Inventory';
+import FruitDetail from './Pages/Inventory/FruitDetail/FruitDetail';
 
 function App() {
   return (
     <div className="App d-flex flex-column min-vh-100">
       <Header></Header>
+
       <Routes>
         <Route path='/' element={
           <CustomTitle title={"Home"}>
@@ -33,6 +35,14 @@ function App() {
           <RequireAuth>
             <CustomTitle title={"Inventory"}>
               <Inventory></Inventory>
+            </CustomTitle>
+          </RequireAuth>
+        }></Route>
+
+        <Route path='/inventory/:fruitId' element={
+          <RequireAuth>
+            <CustomTitle title={"Detail"}>
+              <FruitDetail></FruitDetail>
             </CustomTitle>
           </RequireAuth>
         }></Route>
@@ -61,8 +71,8 @@ function App() {
           </CustomTitle>
         }></Route>
 
-
       </Routes>
+
       <Footer></Footer>
       <ToastContainer />
     </div>
