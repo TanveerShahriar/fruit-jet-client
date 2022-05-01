@@ -11,15 +11,15 @@ const FruitCard = ({ fruit }) => {
     }
 
     return (
-        <div class="col text-start">
-            <div class="card h-100 shadow">
+        <div className="col text-start">
+            <div className="card h-100 shadow">
                 <img className='img-fluid mx-auto mb-3 card-img' src={image} alt="" />
-                <div class="card-body">
-                    <h2 class="card-title text-danger">{name}</h2>
+                <div className="card-body">
+                    <h2 className="card-title text-danger">{name}</h2>
                     <h4>Supplier : {supplier}</h4>
-                    <h5>Quantity : {quantity}</h5>
-                    <h5>Price : ${price}</h5>
-                    <p class="card-text fs-5 text-secondary">{description}</p>
+                    <h5>Quantity : {quantity} KG</h5>
+                    <h5>Price : ${price} per KG</h5>
+                    <p className="card-text fs-5 text-secondary">{description}</p>
                     <button className='btn btn-outline-danger' onClick={() => {navigateToDetail(_id)}}>Stock Update</button>
                 </div>
             </div>

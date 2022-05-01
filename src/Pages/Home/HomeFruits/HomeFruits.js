@@ -10,7 +10,7 @@ const HomeFruits = () => {
         fetch(`http://localhost:5000/inventory?limit=${6}`)
             .then(res => res.json())
             .then(data => setFruits(data))
-    }, [fruits])
+    }, [])
 
     return (
         <Container className='banner-text'>

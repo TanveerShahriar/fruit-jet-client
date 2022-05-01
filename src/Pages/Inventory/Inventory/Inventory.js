@@ -11,7 +11,7 @@ const Inventory = () => {
         fetch('http://localhost:5000/inventory')
             .then(res => res.json())
             .then(data => setFruits(data));
-    }, [fruits])
+    }, [])
 
     const handleDelete = id => {
         swal("Are you sure you want to delete this?", {
