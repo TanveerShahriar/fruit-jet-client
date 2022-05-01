@@ -34,7 +34,7 @@ const Inventory = () => {
 
     return (
         <Container>
-            <table className='table text-start my-5'>
+            <table className='table table-hover text-start my-5'>
                 <thead className='fs-4'>
                     <tr>
                         <th>Name</th>
