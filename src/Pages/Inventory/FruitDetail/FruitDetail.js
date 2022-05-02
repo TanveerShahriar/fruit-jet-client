@@ -28,7 +28,7 @@ const FruitDetail = () => {
 
         const update = parseInt(updateRef.current.value);
 
-        if (isNaN(update) || update <= 0) {
+        if (update <= 0) {
             swal("Please Enter A Valid Amount To Restock");
         }
         else {
@@ -90,7 +90,7 @@ const FruitDetail = () => {
                     }
                     <div className='d-flex'>
                         <form className='d-flex' onSubmit={handleStockUpdate}>
-                            <input className='form-control me-3' ref={updateRef} type="number" name="" id="" placeholder='Amount To Restock' />
+                            <input className='form-control me-3' ref={updateRef} type="number" name="" id="" placeholder='Amount To Restock' required/>
                             <button className='btn btn-outline-danger me-3' type="submit">Restock</button>
                         </form>
                         <button className='btn btn-outline-danger' onClick={handleDeliver} disabled={!quantity}>Deliver</button>

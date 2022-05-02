@@ -12,6 +12,7 @@ import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import Inventory from './Pages/Inventory/Inventory/Inventory';
 import FruitDetail from './Pages/Inventory/FruitDetail/FruitDetail';
+import AddItem from './Pages/AddItem/AddItem';
 
 function App() {
   return (
@@ -43,6 +44,14 @@ function App() {
           <RequireAuth>
             <CustomTitle title={"Detail"}>
               <FruitDetail></FruitDetail>
+            </CustomTitle>
+          </RequireAuth>
+        }></Route>
+
+        <Route path='/additem' element={
+          <RequireAuth>
+            <CustomTitle title={"Add Item"}>
+              <AddItem></AddItem>
             </CustomTitle>
           </RequireAuth>
         }></Route>
