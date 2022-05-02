@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import FruitCard from '../FruitCard/FruitCard';
 import './HomeFruits.css'
 
 const HomeFruits = () => {
     const [fruits, setFruits] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://localhost:5000/inventory?limit=${6}`)
@@ -12,6 +14,9 @@ const HomeFruits = () => {
             .then(data => setFruits(data))
     }, [])
 
+    const navigateToInventory = () => {
+        navigate("/inventory");
+    }
     return (
         <Container className='banner-text'>
             <h1 className='my-5'>Our <span className='text-danger'>Products</span></h1>
@@ -23,6 +28,7 @@ const HomeFruits = () => {
                     ></FruitCard>)
                 }
             </div>
+            <button className='btn btn-outline-danger mb-5 py-3 w-100 fw-bold fs-5' onClick={navigateToInventory}>Manage Inventory</button>
         </Container>
     );
 };
