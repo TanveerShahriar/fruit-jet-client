@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import Inventory from './Pages/Inventory/Inventory/Inventory';
 import FruitDetail from './Pages/Inventory/FruitDetail/FruitDetail';
 import AddItem from './Pages/AddItem/AddItem';
+import MyItem from './Pages/MyItem/MyItem';
 
 function App() {
   return (
@@ -52,6 +53,14 @@ function App() {
           <RequireAuth>
             <CustomTitle title={"Add Item"}>
               <AddItem></AddItem>
+            </CustomTitle>
+          </RequireAuth>
+        }></Route>
+
+        <Route path='/myitem' element={
+          <RequireAuth>
+            <CustomTitle title={"My Items"}>
+              <MyItem></MyItem>
             </CustomTitle>
           </RequireAuth>
         }></Route>

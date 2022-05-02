@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import Fruit from '../Fruit/Fruit';
-import './Inventory.css'
+import auth from '../../firebase.init';
+import './MyItem.css'
 
-const Inventory = () => {
-    const [fruits, setFruits] = useState([]);
+const MyItem = () => {
+    const [user] = useAuthState(auth);
+    const [products, setProducts] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/inventory')
+        const url = `http://localhost:5000/inventory?email=${user.email}`;
+        fetch(url)
             .then(res => res.json())
-            .then(data => setFruits(data));
-    }, [])
+            .then(data => setProducts(data))
+    }, []);
+
+    const navigateToDetail = id => {
+        navigate(`/inventory/${id}`);
+    }
 
     const handleDelete = id => {
         swal("Are you sure you want to delete this?", {
@@ -27,43 +34,42 @@ const Inventory = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            const remaining = fruits.filter(fruit => fruit._id !== id);
-                            setFruits(remaining);
+                            const remaining = products.filter(fruit => fruit._id !== id);
+                            setProducts(remaining);
                         })
                 }
             })
     }
 
-    const navigateToAddItem = () => {
-        navigate("/additem")
-    }
-
     return (
         <Container className='table-responsive banner-text'>
-            <h1 className='text-danger fw-bold mt-3'>Inventory</h1>
+            <h1 className='mt-3 text-danger fw-bold'>My Added Items</h1>
             <table className='table table-hover text-start my-5'>
                 <thead className='fs-4'>
                     <tr>
                         <th>Name</th>
-                        <th>Supplier</th>
                         <th>Qty.</th>
+                        <th>Price</th>
                         <th>More</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        fruits.map(fruit => <Fruit
-                            key={fruit._id}
-                            fruit={fruit}
-                            handleDelete={handleDelete}
-                        ></Fruit>)
+                        products.map(product =>
+                            <tr>
+                                <td>{product.name}</td>
+                                <td>{product.quantity}</td>
+                                <td>{product.price}</td>
+                                <td><button className='btn btn-outline-danger' onClick={() => {navigateToDetail(product._id)}}>...</button></td>
+                                <td><button className='btn btn-outline-danger' onClick={() => handleDelete(product._id)}>X</button></td>
+                            </tr>
+                        )
                     }
                 </tbody>
             </table>
-            <button className='btn btn-outline-danger my-5 py-3 w-100 fw-bold fs-5' onClick={navigateToAddItem}>Add New Item</button>
         </Container>
     );
 };
 
-export default Inventory;
+export default MyItem;
