@@ -7,13 +7,25 @@ import './Inventory.css'
 
 const Inventory = () => {
     const [fruits, setFruits] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [page, setPage] = useState(0);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch('http://localhost:5000/inventory')
-            .then(res => res.json())
-            .then(data => setFruits(data));
-    }, [])
+    useEffect( () =>{
+        fetch(`http://localhost:5000/inventory?page=${page}`)
+        .then(res => res.json())
+        .then(data => setFruits(data));
+    }, [page]);
+
+    useEffect( () =>{
+        fetch('http://localhost:5000/fruitCount')
+        .then(res => res.json())
+        .then(data =>{
+            const count = data.count;
+            const pages = Math.ceil(count/5);
+            setPageCount(pages);
+        })
+    }, [page])
 
     const handleDelete = id => {
         swal("Are you sure you want to delete this?", {
@@ -61,6 +73,16 @@ const Inventory = () => {
                     }
                 </tbody>
             </table>
+            <Container>
+                {
+                    [...Array(pageCount).keys()]
+                        .map(number => <button
+                            className='btn btn-outline-danger me-2'
+                            key={number}
+                            onClick={() => setPage(number)}
+                        >{number + 1}</button>)
+                }
+            </Container>
             <button className='btn btn-outline-danger my-5 py-3 w-100 fw-bold fs-5' onClick={navigateToAddItem}>Add New Item</button>
         </Container>
     );

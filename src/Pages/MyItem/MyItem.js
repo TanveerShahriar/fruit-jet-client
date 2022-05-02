@@ -41,6 +41,12 @@ const MyItem = () => {
             })
     }
 
+    if (products.length === 0) {
+        return <Container className='banner-text'>
+            <h1 className='mt-5 text-danger fw-bold'>You Didn't Added Any Product Yet</h1>
+        </Container>
+    }
+
     return (
         <Container className='table-responsive banner-text'>
             <h1 className='mt-3 text-danger fw-bold'>My Added Items</h1>
@@ -61,7 +67,7 @@ const MyItem = () => {
                                 <td>{product.name}</td>
                                 <td>{product.quantity}</td>
                                 <td>{product.price}</td>
-                                <td><button className='btn btn-outline-danger' onClick={() => {navigateToDetail(product._id)}}>...</button></td>
+                                <td><button className='btn btn-outline-danger' onClick={() => { navigateToDetail(product._id) }}>...</button></td>
                                 <td><button className='btn btn-outline-danger' onClick={() => handleDelete(product._id)}>X</button></td>
                             </tr>
                         )
