@@ -20,7 +20,7 @@ const RequireAuth = ({children}) => {
             <h3 className='text-danger'>Your Email is not verified!!</h3>
             <h5 className='text-success'> Please Verify your email address</h5>
             <button
-            className='btn btn-outline-danger'
+            className='btn btn-outline-danger mb-3'
                 onClick={async () => {
                     await sendEmailVerification();
                     toast('Sent email');
@@ -28,7 +28,6 @@ const RequireAuth = ({children}) => {
             >
                 Send Verification Email Again
             </button>
-            {/* <ToastContainer></ToastContainer> */}
         </div>
     }
     return children;

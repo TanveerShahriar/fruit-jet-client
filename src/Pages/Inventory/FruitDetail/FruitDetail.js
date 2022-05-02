@@ -9,7 +9,7 @@ const FruitDetail = () => {
     const navigate = useNavigate();
     const [fruit, setFruit] = useState([]);
     const { fruitId } = useParams();
-    const { image, name, supplier, price, quantity, email, description } = fruit;
+    const { image, name, supplier, price, quantity, description } = fruit;
 
     useEffect(() => {
         fetch(`http://localhost:5000/inventory/${fruitId}`)
