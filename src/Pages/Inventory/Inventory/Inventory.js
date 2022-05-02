@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import Fruit from '../Fruit/Fruit';
 import './Inventory.css'
 
 const Inventory = () => {
     const [fruits, setFruits] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5000/inventory')
@@ -32,6 +34,10 @@ const Inventory = () => {
             })
     }
 
+    const navigateToAddItem = () => {
+        navigate("/additem")
+    }
+
     return (
         <Container className='table-responsive'>
             <table className='table table-hover text-start my-5'>
@@ -54,6 +60,7 @@ const Inventory = () => {
                     }
                 </tbody>
             </table>
+            <button className='btn btn-outline-danger my-5 py-3 w-100 fw-bold fs-5' onClick={navigateToAddItem}>Add New Item</button>
         </Container>
     );
 };
