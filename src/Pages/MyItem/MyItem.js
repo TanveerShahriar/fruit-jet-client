@@ -37,12 +37,6 @@ const MyItem = () => {
         }
         getOrders();
     }, [user])
-    // useEffect(() => {
-    //     const url = `http://localhost:5000/myinventory?email=${user.email}`;
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then(data => setProducts(data))
-    // }, []);
 
     const navigateToDetail = id => {
         navigate(`/inventory/${id}`);

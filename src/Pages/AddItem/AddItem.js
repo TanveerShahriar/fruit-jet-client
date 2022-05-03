@@ -39,17 +39,6 @@ const AddItem = () => {
                 .then(res => res.json())
                 .then(data => {
                 });
-
-            fetch("http://localhost:5000/myinventory", {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(fruit)
-            })
-                .then(res => res.json())
-                .then(data => {
-                });
         }
         event.target.reset()
         toast("Item Added")
