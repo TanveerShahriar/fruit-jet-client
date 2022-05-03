@@ -18,7 +18,6 @@ const AddItem = () => {
         const email = event.target.email.value;
         const description = event.target.description.value;
         const image = event.target.image.value;
-
         if (quantity <= 0) {
             swal("Please enter a valid quantity");
         }
@@ -39,9 +38,9 @@ const AddItem = () => {
                 .then(res => res.json())
                 .then(data => {
                 });
+            toast("Item Added")
         }
         event.target.reset()
-        toast("Item Added")
     }
     return (
         <div className='container bg-danger mx-auto my-5 py-5 rounded login-form'>

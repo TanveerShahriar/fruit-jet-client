@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
@@ -17,18 +16,20 @@ const MyItem = () => {
         const getOrders = async () => {
             const email = user?.email;
             const url = `http://localhost:5000/myinventory?email=${email}`;
-            console.log(url);
             try {
-                const { data } = await axios.get(url, {
+                fetch(url, {
+                    method: 'GET',
                     headers: {
-                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        'content-type': 'application/json',
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                     }
-                });
-                console.log(data);
-                setProducts(data);
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        setProducts(data)
+                    });
             }
             catch (error) {
-                console.log(error);
                 if (error.response.status === 401 || error.response.status === 403) {
                     signOut(auth);
                     navigate('/login')
