@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
 import './SocialLogin.css'
 import { library } from '@fortawesome/fontawesome-svg-core';
+import useToken from '../../../hooks/useToken';
 
 library.add(fab, faGoogle);
 
@@ -14,6 +15,7 @@ const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
     const location = useLocation();
+    const [token] = useToken(user);
 
     let from = location.state?.from?.pathname || "/";
     
@@ -27,7 +29,7 @@ const SocialLogin = () => {
         errorElement = <p className='text-white'>Error: {error?.message}</p>
     }
 
-    if (user) {
+    if (token) {
         navigate(from, { replace: true });
     }
 

@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import { Form } from 'react-bootstrap';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Loading from '../../Shared/Loading/Loading';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const nameRef = useRef('');
@@ -27,6 +28,7 @@ const Register = () => {
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     const navigate = useNavigate();
+    const [token] = useToken(user);
 
     if (loading) {
         return <Loading></Loading>
@@ -36,7 +38,7 @@ const Register = () => {
         errorElement = <p className='text-white'>Error: {error?.message}</p>
     }
 
-    if (user) {
+    if (token) {
         navigate(from, { replace: true });
     }
 

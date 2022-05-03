@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import './Login.css'
@@ -26,7 +27,7 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
-
+    const [token] = useToken(user);
 
     if (loading || sending) {
         return <Loading></Loading>
@@ -36,8 +37,7 @@ const Login = () => {
         errorElement = <p className='text-white'>Error: {error?.message}</p>
     }
 
-    if (user) {
-        console.log(user);
+    if (token) {
         navigate(from, { replace: true });
     }
 
@@ -55,11 +55,11 @@ const Login = () => {
             await sendPasswordResetEmail(email);
             toast('Sent email');
         }
-        else{
+        else {
             toast('please enter your email address');
         }
     }
-    
+
     return (
         <div className='container bg-danger mx-auto my-5 py-5 rounded login-form'>
             <h2 className='text-white text-center mt-2'>Please Login</h2>
