@@ -13,7 +13,7 @@ const Header = () => {
         signOut(auth);
     }
     return (
-        <div>
+        <div className='sticky-top'>
             <div className='my-nav'>
                 <Navbar bg="danger" variant="dark" expand="lg">
                     <Container>

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
+import AddComment from '../AddComment/AddComment';
 import Comment from '../Comment/Comment';
 import './Comments.css'
 
 const Comments = () => {
     const [comments, setComments] = useState([]);
+    const [refresh, setRefresh] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:5000/comment')
-        .then(res=> res.json())
-        .then(data => setComments(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setComments(data))
+    }, [refresh])
     return (
         <Container className='banner-text mb-5'>
             <h1 className='text-danger mb-4'>Comments</h1>
@@ -18,10 +20,15 @@ const Comments = () => {
                 {
                     comments.map(comment => <Comment
                         key={comment._id}
-                        comment = {comment}
+                        comment={comment}
                     ></Comment>)
                 }
             </div>
+            <AddComment
+                refresh = {refresh}
+                setRefresh = {setRefresh}
+            >
+            </AddComment>
         </Container>
     );
 };
