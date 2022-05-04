@@ -1,12 +1,31 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import swal from 'sweetalert';
 import auth from '../../../firebase.init';
 import './Comment.css'
 
-const Review = ({ comment }) => {
+const Review = ({ comment, refresh, setRefresh }) => {
     const [user] = useAuthState(auth);
-    const { picture, name, description } = comment;
+    const { _id, picture, name, description } = comment;
+
+    const handleDelete = id => {
+        swal("Are you sure you want to delete your comment?", {
+            buttons: ["No!", true],
+        })
+            .then(proceed => {
+                if (proceed) {
+                    const url = `http://localhost:5000/comment/${id}`;
+                    fetch(url, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            setRefresh(!refresh);
+                        })
+                }
+            })
+    }
     return (
         <Col className='comment'>
             <Card className='h-100'>
@@ -19,7 +38,7 @@ const Review = ({ comment }) => {
                     {
                         (user?.displayName === name) ?
                             <div className='w-100 me-auto'>
-                                <button className='btn btn-danger text-white text-decoration-none link'>Delete</button>
+                                <button className='btn btn-danger text-white text-decoration-none link' onClick={() => handleDelete(_id)}>Delete</button>
                             </div>
                             :
                             <></>

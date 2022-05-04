@@ -21,6 +21,8 @@ const Comments = () => {
                     comments.map(comment => <Comment
                         key={comment._id}
                         comment={comment}
+                        refresh={refresh}
+                        setRefresh={setRefresh}
                     ></Comment>)
                 }
             </div>
