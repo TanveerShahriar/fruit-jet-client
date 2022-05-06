@@ -9,7 +9,7 @@ const HomeFruits = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/inventory?limit=${6}`)
+        fetch(`https://blooming-reef-45045.herokuapp.com/inventory?limit=${6}`)
             .then(res => res.json())
             .then(data => setFruits(data))
     }, [])

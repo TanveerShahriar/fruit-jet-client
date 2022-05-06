@@ -16,7 +16,7 @@ const MyItem = () => {
     useEffect(() => {
         const getOrders = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/myinventory?email=${email}`;
+            const url = `https://blooming-reef-45045.herokuapp.com/myinventory?email=${email}`;
             try {
                 const { data } = await axios.get(url, {
                     headers: {
@@ -45,7 +45,7 @@ const MyItem = () => {
         })
             .then(proceed => {
                 if (proceed) {
-                    const url = `http://localhost:5000/inventory/${id}`;
+                    const url = `https://blooming-reef-45045.herokuapp.com/inventory/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })

@@ -22,7 +22,7 @@ const AddComment = ({ refresh, setRefresh }) => {
             picture = "https://raw.githubusercontent.com/TanveerShahriar/images/main/a11images/default.jpg"
         }
         const comment = { name, description, picture };
-        const url = "http://localhost:5000/comment";
+        const url = "https://blooming-reef-45045.herokuapp.com/comment";
         fetch(url, {
             method: 'POST',
             headers: {

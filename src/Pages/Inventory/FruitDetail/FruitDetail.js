@@ -12,7 +12,7 @@ const FruitDetail = () => {
     const { image, name, supplier, price, quantity, description } = fruit;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/inventory/${fruitId}`)
+        fetch(`https://blooming-reef-45045.herokuapp.com/inventory/${fruitId}`)
             .then(res => res.json())
             .then(data => setFruit(data));
 
@@ -36,7 +36,7 @@ const FruitDetail = () => {
             setFruit(updatedFruit);
 
 
-            const url = `http://localhost:5000/inventory/${fruitId}`;
+            const url = `https://blooming-reef-45045.herokuapp.com/inventory/${fruitId}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -59,7 +59,7 @@ const FruitDetail = () => {
             setFruit(updatedFruit);
 
             // send data to the server
-            const url = `http://localhost:5000/inventory/${fruitId}`;
+            const url = `https://blooming-reef-45045.herokuapp.com/inventory/${fruitId}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {

@@ -9,7 +9,7 @@ const Comments = () => {
     const [refresh, setRefresh] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/comment')
+        fetch('https://blooming-reef-45045.herokuapp.com/comment')
             .then(res => res.json())
             .then(data => setComments(data))
     }, [refresh])

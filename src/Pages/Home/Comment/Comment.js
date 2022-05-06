@@ -15,7 +15,7 @@ const Review = ({ comment, refresh, setRefresh }) => {
         })
             .then(proceed => {
                 if (proceed) {
-                    const url = `http://localhost:5000/comment/${id}`;
+                    const url = `https://blooming-reef-45045.herokuapp.com/comment/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })

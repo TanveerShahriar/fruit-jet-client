@@ -12,13 +12,13 @@ const Inventory = () => {
     const navigate = useNavigate();
 
     useEffect( () =>{
-        fetch(`http://localhost:5000/inventory?page=${page}`)
+        fetch(`https://blooming-reef-45045.herokuapp.com/inventory?page=${page}`)
         .then(res => res.json())
         .then(data => setFruits(data));
     }, [page]);
 
     useEffect( () =>{
-        fetch('http://localhost:5000/fruitCount')
+        fetch('https://blooming-reef-45045.herokuapp.com/fruitCount')
         .then(res => res.json())
         .then(data =>{
             const count = data.count;
@@ -33,7 +33,7 @@ const Inventory = () => {
         })
             .then(proceed => {
                 if (proceed) {
-                    const url = `http://localhost:5000/inventory/${id}`;
+                    const url = `https://blooming-reef-45045.herokuapp.com/inventory/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })

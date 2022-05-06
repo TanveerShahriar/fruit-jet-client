@@ -6,7 +6,7 @@ const useToken = (user) => {
     useEffect(() => {
         const getToken = () => {
             const email = user?.user?.email;
-            const url = "http://localhost:5000/login";
+            const url = "https://blooming-reef-45045.herokuapp.com/login";
             if (email) {
                 fetch(url, {
                     method: 'POST',
