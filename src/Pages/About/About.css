@@ -1,0 +1,7 @@
+.myself{
+    color: rgba(65, 35, 35, 0.8);
+    padding: 20px;
+    border: 5px solid orangered;
+    border-radius: 50px;
+    background-color: rgba(235, 229, 227, 0.811);
+}

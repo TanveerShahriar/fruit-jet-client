@@ -30,6 +30,7 @@ const Header = () => {
                                     </>
                                 }
                                 <CustomLink to="/blogs">BLOGS</CustomLink>
+                                <CustomLink to="/about">About Us</CustomLink>
                                 {
                                     user ?
                                         <button className='btn btn-link text-white text-decoration-none link' onClick={handleSignOut}>LOGOUT</button>

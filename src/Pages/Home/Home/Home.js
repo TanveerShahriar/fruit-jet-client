@@ -1,6 +1,7 @@
 import Loading from '../../Shared/Loading/Loading';
 import Banner from '../Banner/Banner';
 import Comments from '../Comments/Comments';
+import Delivery from '../Delivery/Delivery';
 import HomeFruits from '../HomeFruits/HomeFruits';
 import './Home.css'
 
@@ -15,6 +16,7 @@ const Home = () => {
             <Loading></Loading>
             <Banner></Banner>
             <HomeFruits></HomeFruits>
+            <Delivery></Delivery>
             <Comments></Comments>
         </div>
     );

@@ -14,6 +14,7 @@ import Inventory from './Pages/Inventory/Inventory/Inventory';
 import FruitDetail from './Pages/Inventory/FruitDetail/FruitDetail';
 import AddItem from './Pages/AddItem/AddItem';
 import MyItem from './Pages/MyItem/MyItem';
+import About from './Pages/About/About';
 
 function App() {
   return (
@@ -68,6 +69,12 @@ function App() {
         <Route path='/blogs' element={
           <CustomTitle title={"Blogs"}>
             <Blogs></Blogs>
+          </CustomTitle>
+        }></Route>
+
+        <Route path='/about' element={
+          <CustomTitle title={"About"}>
+            <About></About>
           </CustomTitle>
         }></Route>
 
